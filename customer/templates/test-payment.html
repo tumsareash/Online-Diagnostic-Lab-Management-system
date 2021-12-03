@@ -1,0 +1,50 @@
+{% extends 'customer/cheader.html' %}
+{% load static %}
+
+{% block content %}
+<br><br>
+
+	<b>
+	</h2 class="title"> Booking Test Amount :- </h2>
+	</label class="title"> {{test.test_rate}} </label> </b>
+		<br><br>
+	<div class="btn_container">
+		<!-- Payment Button -->
+		<label class="btn btn-primary"><button class="btn" id="pay-btn">Make Payment</button></label>
+	</div>
+	
+
+
+<!-- Razorpay's Javascript code. -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+	var options = {
+	
+	// Enter the Key ID generated from the Dashboard
+	key: "{{ razorpay_merchant_key }}",
+	
+	// Amount is in currency subunits.
+	// Default currency is INR. Hence,
+	// 50000 refers to 50000 paise
+	amount: "{{ razorpay_amount }}",
+	currency: "{{ currency }}",
+	
+	// Your/store name.
+	name: "Dj Razorpay",
+	
+	// Pass the `id` obtained in the response of Step 1
+	order_id: "{{ razorpay_order_id }}",
+	callback_url: "{{ callback_url }}",
+	};
+	
+	// initialise razorpay with the options.
+	var rzp1 = new Razorpay(options);
+	
+	// add event listener to the payment button.
+	document.getElementById("pay-btn").onclick = function (e) {
+	rzp1.open();
+	e.preventDefault();
+	};
+</script>
+
+{% endblock %}

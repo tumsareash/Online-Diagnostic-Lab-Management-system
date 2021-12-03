@@ -1,0 +1,44 @@
+{% extends 'customer/cheader.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for appointment in appointments %}
+<br>
+  <div class="col-md-4">
+    <div style="background-color:grey;" class="card card-profile">
+      <div class="card-avatar">
+          <img class="img-circle" src="{% static 'avtar.png' %}" alt = 'image' width="150" height="160"/>
+      </div>
+      <b>
+      <div class="card-body">
+        <p class="card-description">
+          Customer Name : {{appointment.customer.fname}} {{appointment.customer.lname}}
+        </p>
+        
+        <p class="card-description">
+          Test Description : {{appointment.test.test_name}}
+        </p>
+        <p class="card-description">
+          Test Date : {{appointment.date}}
+        </p>
+        <p class="card-description">
+          Amount Paid : {{appointment.amount}}
+        </p>
+        <p class="card-description">
+          Test Status : {{appointment.status}}
+        </p>
+        </b>
+		
+      </div>
+    </div>
+    {% comment %} <a href="{% url 'booking' %}"><button class="btn btn-primary">Book Test</button></a> {% endcomment %}
+    {% comment %} <a href="{% url 'emp-delete-test' test.id %}"><button class="btn btn-primary">Delete</button></a> {% endcomment %}
+  </div>
+  <br>
+
+
+{% endfor %}
+
+
+{% endblock %}

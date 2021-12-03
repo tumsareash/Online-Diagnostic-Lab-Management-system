@@ -1,0 +1,105 @@
+{% extends 'emp-header.html' %}
+{% load static %}
+
+{% block content %}
+<!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h3 class="card-title" style="Background:yellow;"><b>Total Bookings</b></h3>
+                  {% comment %} <p class="card-category"> Here is a table for all the appointments</p> {% endcomment %}
+                </div>
+
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary" style="Background:#5391cf;">
+                        <th style="color:black;">
+                          <b>First Name</b>
+                        </th>
+                        <th style="color:black;">
+                           <b>Last Name </b>
+                        </th>
+                        <th style="color:black;">
+                        <b>  Email  </b>
+                        </th>
+                        
+                        <th style="color:black;">
+                         <b>  Address  </b>
+                        </th>
+                        <th style="color:black;">
+                         <b>  Test  </b>
+                        </th>
+                        
+                        <th style="color:black;">
+                         <b>  Booking date  </b>
+                        </th>
+                        <th style="color:black;">
+                         <b>  Status  </b>
+                        </th>
+                      </thead>
+                      <tbody>
+                        {% for appointment in appointments %}
+
+                        {% if appointment.status == "Done"  %}
+
+                        {% else %}
+                        
+                        <tr>
+                          <td>
+                            {{appointment.customer.fname}}
+                          </td>
+                          <td>
+                            {{appointment.customer.lname}}
+                          </td>
+                          <td>
+                            {{appointment.customer.email}}
+                          </td>
+                          
+                          <td class="text">
+                           {{appointment.customer.address}}
+                          </td>
+                           <td class="text">
+                           {{appointment.test.test_name}}
+                          </td>
+                          <td class="text">
+                           {{appointment.date}}
+                          </td>
+                          <td class="text" style="color:red;">
+                          <b>
+                           {{appointment.status}} </b>
+                          </td>
+{% if appointment.status == 'Live' %}
+
+                          <td class="text">
+                           <a href="{% url 'change-status' appointment.id %}"><button class="btn-xs">Change Status</button></a>
+                          </td>
+   {% endif %}
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title mt-0"> Table on Plain Background</h4>
+                  <p class="card-category"> Here is a subtitle for this table</p>
+                </div>
+                <div class="card-body">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endblock %}

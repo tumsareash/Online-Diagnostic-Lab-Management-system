@@ -1,0 +1,33 @@
+  {% extends 'customer/cheader.html' %}
+{% load static %}
+
+{% block content %}
+
+{% for test in tests %}
+<br>
+  <div class="col-md-4">
+    <div class="card card-profile">
+      <div class="card-avatar">
+        <a href="javascript:;">
+          <img class="img-circle" src="{% static 'add-test2/images/blood_test.jfif' %}" alt = 'image' />
+        </a>
+      </div>
+      <div class="card-body">
+        <h6 class="card-category text-gray">Test Name : {{test.test_name}} </h6>
+        <p class="card-description">
+          Test Description : {{test.test_desc}}
+        </p>
+       
+		<p>Test Rate : {{test.test_rate}}</p>
+      </div>
+    </div>
+    <a href="{% url 'booking' test.id %}"><button class="btn btn-primary">Book Test</button></a>
+    {% comment %} <a href="{% url 'emp-delete-test' test.id %}"><button class="btn btn-primary">Delete</button></a> {% endcomment %}
+  </div>
+  <br>
+
+
+{% endfor %}
+
+
+{% endblock %}

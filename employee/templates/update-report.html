@@ -1,0 +1,119 @@
+{% extends 'emp-header.html' %}
+{% load static %}
+
+{% block content %}
+<!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+              {% if msg %}
+                         <h3 style="color:blue">{{msg}}</h3>
+              {% endif %}
+                <div class="card-header card-header-primary">
+                  <h3 class="card-title" style="Background:yellow;"><b>Sample Collected details of the Bookings</b></h3>
+                  {% comment %} <p class="card-category"> Here is a table for all the appointments</p> {% endcomment %}
+                </div>
+                
+
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary" style="Background:#5391cf;">
+                        <th style="color:black;">
+                          <b>First Name</b>
+                        </th>
+                        <th style="color:black;">
+                           <b>Last Name </b>
+                        </th>
+{% comment %}           <th style="color:black;">
+                        <b>  Email  </b>
+                        </th>
+                        
+                        <th style="color:black;">
+                         <b>  Address  </b>
+                        </th> {% endcomment %}
+                        <th style="color:black;">
+                         <b>  Test  </b>
+                        </th>
+                        
+                        <th style="color:black;">
+                         <b>  Booking date  </b>
+                        </th>
+                        <th style="color:black;">
+                         <b>  Status  </b>
+                        </th>
+                         <th style="color:black;">
+                         <b>  Test Report </b>
+                        </th>
+                      
+                      </thead>
+                      <tbody>
+                        {% for appointment in appointments %}
+                        
+                        <tr>
+                          <td>
+                            {{appointment.customer.fname}}
+                          </td>
+                          <td>
+                            {{appointment.customer.lname}}
+                          </td>
+{% comment %}                           <td>
+                            {{appointment.customer.email}}
+                          </td>
+                          
+                          <td class="text">
+                           {{appointment.customer.address}}
+                          </td> {% endcomment %}
+                           <td class="text">
+                           {{appointment.test.test_name}}
+                          </td>
+                          <td class="text">
+                           {{appointment.date}}
+                          </td>
+                          <td class="text" style="color:red;">
+                          <b>
+                           {{appointment.status}} </b>
+                          </td>
+ 
+                          <td class="form-group">
+                            <form action="{% url 'upload-result' appointment.id %}" method="POST" enctype="multipart/form-data" >
+                              {% csrf_token %}           
+                                      
+                              <input type="file"  name="test_result">
+                              <button type = "submit" class="btn-xs">upload report</button>
+                            </form>
+                          </td>
+
+
+ {% if appointment.test_result %}
+                          <td class="text">
+                           <a href="{{appointment.test_result.url}}">
+                           <button  class="btn-xs">Download</button></a>
+                          </td>
+{% endif %}  
+                        </tr>
+                        {% endfor %}
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="card card-plain">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title mt-0"> Table on Plain Background</h4>
+                  <p class="card-category"> Here is a subtitle for this table</p>
+                </div>
+                <div class="card-body">
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endblock %}

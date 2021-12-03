@@ -1,0 +1,68 @@
+{% extends 'customer/cheader.html' %}
+{% load static %}
+{% block content %}
+
+    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-4">
+            
+                <div class="card-body">
+                    <h2 class="title"> Booking Details </h2>
+                   
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">First Name</label>
+                                    <input class="input--style-4" type="text" name="fname"  value="{{uid.fname}}">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Last Name</label>
+                                    <input class="input--style-4" type="text" name="lname" value="{{uid.lname}}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            
+                            
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="email" name="email" value="{{uid.email}}">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Phone Number</label>
+                                    <input class="input--style-4" type="text" name="mobile"  value="{{uid.mobile}}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Test Name</label>
+                                    <input class="input--style-4" type="text"  name="test_name" value="{{test.test_name}}">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Total Amount</label>
+                                    <input class="input--style-4" type="text" name="amount" value="{{test.test_rate}}">
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                        <a href="{% url 'test-payment' test.id %}"><button class="btn btn-primary">Proceed for payment</button></a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<br><br>
+{% endblock %}

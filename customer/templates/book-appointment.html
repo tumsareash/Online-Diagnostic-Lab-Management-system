@@ -1,0 +1,84 @@
+{% extends 'customer/cheader.html'%}
+{% load static %}
+{% block content %}
+
+    
+
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-img">
+                   <br>
+                    <div class="signup-img-content">
+                        <h3><b>Confirm booking details </b> </h3>
+                    </div>
+                </div>
+                <div class="signup-form">
+                    <form action="{% url 'book-appointment' %}"  method="POST" class="register-form" >
+                        <div class="form-row">
+                            <div class="form-group">
+                            <p><b>Patient Details </b></p>
+                                <div class="form-input">
+                                    <label style="color:blue"  class="text"><b>First Name</b></label>
+                                    <input style="background-color:powderblue;" type="text" name="fname" value="{{uid.fname}}" />
+                                </div>
+                                <div class="form-input">
+                                    <label style="color:blue" class="text"><b>Last name</b></label>
+                                    <input style="background-color:powderblue;" type="text" name="lname" value="{{uid.lname}}"  />
+                                </div>
+                                <div class="form-input">
+                                    <label style="color:blue" class="text"><b>Mobile</b></label>
+                                    <input style="background-color:powderblue;" type="text" name="contact"value="{{uid.mobile}}" />
+                                </div>
+                                <div class="form-input">
+                                    <label style="color:blue" for="email" class="required"><b>Email</b></label>
+                                    <input style="background-color:powderblue;" type="text" name="email" value={{uid.email}} />
+                                </div>
+                                {% comment %} <div class="form-input">
+                                    <label style="color:blue" for="phone_number" class="text"><b>Address</b></label>
+                                    <input style="background-color:powderblue;" type="text" name="address" value="{{uid.address}}"/>
+                                </div> {% endcomment %}
+                            </div>
+                            <br>
+
+                            <div class="form-group">
+                            <p> <br></p>
+                            </div>
+
+                            <div class="form-group">
+                            <p><b>Test Selected for booking</b></p>
+                                <div class="form-select">
+                                    <div class="label-flex">
+                                        <label style="color:#cf2f17;"for="meal_preference"><b>Test Names</b></label>
+                                        <input style="background-color:grey;" type="text" name="test.test_name" value="{{test.test_name}}"/>
+                                    </div>
+                                     <div class="col-md-6">
+                                    <div class="form-group">
+                                    <label>Event at</label>
+                                    <input type="date" name="date" class="form-control">
+                                    </div>
+                                    </div>
+                                    <div class="label-flex">
+                                        <label style="color:#cf2f17;" for="meal_preference"><b>Total Amount</b> <label>
+                                        <input style="background-color:grey;" type="text" name="test.amount" value="{{test.test_rate}}"/>
+                                    </div>
+                                    
+                                </div>
+                        
+                            </div>
+                        </div>
+                        <div class="donate-us">
+                            <label><b> Click on Proceed button to confirm your booking</b></label>
+                            <div class="price_slider ui-slider ui-slider-horizontal">
+                                <div id="slider-margin"></div>
+                                <span class="donate-value" ></span>
+                            </div>
+                        </div>
+                        <div>                           
+                             <button type="submit" class="btn btn-primary pull-right">Confirm Booking</button> 
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+  

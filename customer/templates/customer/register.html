@@ -1,0 +1,65 @@
+{% extends 'header.html' %}
+{% load static %}
+
+  {% block content%}
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+
+                        {% if msg %}
+                         <h3>{{msg}}</h3>
+                         {% endif %}
+                        <form action="{% url 'register' %}" method="POST" enctype="multipart/form-data" >
+                        {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" name="fname"  placeholder="First Name" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="lname"  placeholder="Last Name" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email"  placeholder="Email" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="mobile"  placeholder="Mobile" required />
+                            </div>
+                            </div>
+                                 <label for="">Address : </label>
+                                 <textarea name="address"  class='form-control' id="" cols="5" rows="3" required></textarea>
+                            {% comment %} </div>
+                            <div class = "form-group">
+                            <label for="" class="bmd-label-floating">Profile Image : </label>
+                              <input type="file" name="pic"  id=""><br>
+                            </div> {% endcomment %}
+
+                            <br><br>
+
+                            <div class="form-group">
+                                <input type="password" name="password" placeholder="Password" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="cpassword"  placeholder="Repeat your password" required />
+                            </div>
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" required />
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            </div>
+                             
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup"  class="form-submit" value="Register"/>
+                            </div>
+                        </form>
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
+        
+
+    </div>
+
+  {% endblock %}

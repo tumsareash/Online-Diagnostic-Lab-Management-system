@@ -1,0 +1,151 @@
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="copyright" content="MACode ID, https://macodeid.com/">
+
+  <title>One Health - Medical Center HTML5 Template</title>
+
+  <link rel="stylesheet" href="{% static 'assets/css/maicons.css' %}">
+
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.css' %}">
+
+  <link rel="stylesheet" href="{% static 'assets/vendor/owl-carousel/css/owl.carousel.css' %}">
+
+  <link rel="stylesheet" href="{% static 'assets/vendor/animate/animate.css' %}">
+
+  <link rel="stylesheet" href="{% static 'assets/css/theme.css' %}">
+</head>
+<body>
+
+  <!-- Back to top button -->
+  <div class="back-to-top"></div>
+
+  <header>
+    
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="#"><span class="text-primary">One</span>-Health</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupport">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="navbar navbar-expand-lg navbar-light shadow-sm" href="{% url 'index' %}"><b>Home</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="navbar navbar-expand-lg navbar-light shadow-sm" href="{% url 'view-test' %}"><b>View Test</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="navbar navbar-expand-lg navbar-light shadow-sm" href="{% url 'my-bookings' %}"><b>Booked Appointments</b></a>
+            </li>
+            {% comment %} <li class="nav-item">
+              <a class="navbar navbar-expand-lg navbar-light shadow-sm" href="#"><b>Payment History</b></a>
+            </li> {% endcomment %}
+            <li class="nav-item">
+              <a class="navbar navbar-expand-lg navbar-light shadow-sm" href="{% url 'test-reports' %}"> <b> Test Reports </b> </a>
+            </li>
+            <li class="nav-item">
+
+             <div class="nav-item dropdown">
+                          <a style = "color:#eb091f;" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                          <b ><i>{{uid.fname}} {{uid.lname}}</i></b>
+                            <span class="collapse navbar-collapse justify-content-between">
+                              
+                            </span>
+                          </a>
+                          <div class="dropdown-menu">
+                            
+                            <a href="{% url 'profile' %}" class="dropdown-item">
+                                <i class="ni ni-single-02"></i>
+                                <span>My profile</span>
+                              </a>
+                              
+                              <div class="dropdown-divider"></div>
+                              <a href="{% url 'logout' %}" class="dropdown-item">
+                                <i class="ni ni-user-run"></i>
+                                <span>Logout</span>
+                              </a>
+                            </div>
+              <li class="nav-item">
+              <div><img  src="{{uid.pic.url}}" height="30" width="30"  /></div>
+            </li>
+                          
+            </li>
+          </ul>
+        </div> <!-- .navbar-collapse -->
+      </div> <!-- .container -->
+    </nav>
+  </header>
+
+    
+  
+
+
+      {% block content %}
+
+
+
+
+      {% endblock %}
+
+
+
+   
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row px-md-3">
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>Company</h5>
+          <ul class="footer-menu">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Career</a></li>
+            <li><a href="#">Editorial Team</a></li>
+            <li><a href="#">Protection</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>More</h5>
+          <ul class="footer-menu">
+            <li><a href="#">Terms & Condition</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Advertise</a></li>
+            <li><a href="#">Join as Doctors</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>Our partner</h5>
+          <ul class="footer-menu">
+            <li><a href="#">One-Fitness</a></li>
+            <li><a href="#">One-Drugs</a></li>
+            <li><a href="#">One-Live</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>Contact</h5>
+          <p class="footer-link mt-2">351 Willow Street Franklin, MA 02038</p>
+          <a href="#" class="footer-link">701-573-7582</a>
+          <a href="#" class="footer-link">healthcare@temporary.net</a>
+
+        </div>
+      </div>
+
+          </div>
+  </footer>
+
+<script src="{% static 'assets/js/jquery-3.5.1.min.js' %}"></script>
+
+<script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+
+<script src="{% static 'assets/vendor/owl-carousel/js/owl.carousel.min.js' %}"></script>
+
+<script src="{% static 'assets/vendor/wow/wow.min.js' %}"></script>
+
+<script src="{% static 'assets/js/theme.js' %}"></script>
+  
+</body>
+</html>

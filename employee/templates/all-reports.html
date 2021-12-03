@@ -1,0 +1,77 @@
+{% extends 'emp-header.html' %}
+{% load static %}
+
+{% block content %}
+<!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h3 class="card-title" style="Background:yellow;"><b>Reports of all the Bookings</b></h3>
+                </div>
+                
+
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary" style="Background:#5391cf;">
+                        <th style="color:black;">
+                          <b>First Name</b>
+                        </th>
+                        <th style="color:black;">
+                           <b>Last Name </b>
+                        </th>
+
+                        <th style="color:black;">
+                         <b>  Booked Test   </b>
+                        </th>
+                        
+                        <th style="color:black;">
+                         <b>  Booking date and Time  </b>
+                        </th>
+                        
+                         <th style="color:black;">
+                         <b>  Test Report </b>
+                        </th>
+                      
+                      </thead>
+                      <tbody>
+                        {% for appointment in appointments %}
+                        
+                        <tr>
+                          <td>
+                            {{appointment.customer.fname}}
+                          </td>
+                          <td>
+                            {{appointment.customer.lname}}
+                          </td>
+
+                           <td class="text">
+                           {{appointment.test.test_name}}
+                          </td>
+                          <td class="text">
+                           {{appointment.date}}
+                          </td>
+ 
+                          {% if appointment.test_result %} 
+                          <td class="text">
+                           <a href="{{appointment.test_result.url}}">
+                           <button  class="btn-xs">Download</button></a>
+                          </td>
+                         {% endif %}
+
+                        </tr>
+                        {% endfor %}
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endblock %}
