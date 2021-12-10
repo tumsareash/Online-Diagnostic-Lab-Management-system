@@ -274,6 +274,8 @@ def upload_result(request,pk):
         appointment.status = "Done"
         appointment.save()
         msg = "Test Report Updated Successfully"
+        
+        
         appointments = models.Appointment.objects.all()
         return render(request,'update-report.html',{'msg':msg,'appointments':appointments,'uid':uid})
         
